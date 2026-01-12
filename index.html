@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Jobs - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1d4ed8;
+            --light-bg: #f8fafc;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+        }
+
+        .bg-gradient-blue {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .hero-section {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+        }
+
+        .card {
+            border: none;
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card-img-top {
+            border-radius: 16px 16px 0 0;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-light {
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: var(--primary-color);
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 12px 24px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 32px;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 120px;
+            color: rgba(37, 99, 235, 0.1);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+
+        .job-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .job-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .tip-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            border: none;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .contact-card i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .btn-outline-primary {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-primary:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .filter-section {
+            background: white;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .contact-info {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-control {
+            border-radius: 8px;
+            border: 2px solid #e2e8f0;
+            padding: 12px 16px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 60vh;
+                text-align: center;
+            }
+
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .section-padding {
+                padding: 60px 0;
+            }
+
+            .card, .job-card, .tip-card, .service-card, .feature-card, .contact-card {
+                margin-bottom: 20px;
+                padding: 24px;
+            }
+
+            .filter-section {
+                padding: 24px;
+            }
+
+            .contact-info {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .display-4 {
+                font-size: 2rem;
+            }
+
+            .display-5 {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .badge {
+                display: block;
+                width: fit-content;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="bg-white shadow-sm border-bottom">
+        <div class="container-fluid px-3">
+            <div class="d-flex justify-content-between align-items-center py-3">
+                <img src="logo.png" alt="Success Jobs Logo" class="h-auto" style="height: 48px;" loading="lazy">
+                <div class="d-flex align-items-center text-primary fw-semibold">
+                    <i class="fas fa-phone me-2"></i>
+                    <span>CALL: 0141-3537167</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium px-3" href="#" data-route="/">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium px-3" href="#" data-route="/about">ABOUT US</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium px-3" href="#" data-route="/openings">CURRENT OPENINGS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium px-3" href="#" data-route="/tips">INTERVIEW TIPS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-medium px-3" href="#" data-route="/contact">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <!-- Hero Section -->
+        <section class="hero-section bg-gradient-blue text-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4 animate__animated animate__fadeInUp">Success Jobs</h1>
+                        <p class="lead mb-4 animate__animated animate__fadeInUp animate__delay-1s">
+                            Leading manpower consulting firm in Jaipur. We deliver quality candidates to our clients.
+                        </p>
+                        <p class="mb-5 animate__animated animate__fadeInUp animate__delay-2s">
+                            Our motto: Place the right candidate in the right job within the time frame.
+                        </p>
+                        <a href="#" class="btn btn-light animate__animated animate__fadeInUp animate__delay-3s" data-route="/contact">
+                            <i class="fas fa-handshake me-2"></i>GET HELP NOW
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Specialization Section -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="display-5 fw-bold text-dark mb-3">Our Areas of Specialization</h2>
+                        <p class="lead text-muted">Expertise across multiple domains to meet your staffing needs</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 shadow">
+                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c" alt="Executive Search" class="card-img-top" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title fw-semibold text-dark h5">Executive Search</h3>
+                                <p class="card-text text-muted flex-grow-1">
+                                    Specialized in C-level and VP-level roles. Expedite hiring with our 30-day completion guarantee.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 shadow">
+                            <img src="https://images.unsplash.com/photo-1526378722484-bd91ca387e72" alt="IT Staffing" class="card-img-top" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title fw-semibold text-dark h5">IT Staffing</h3>
+                                <p class="card-text text-muted flex-grow-1">
+                                    Scalable IT solutions for start-ups to conglomerates. Contract, direct hire, and temp-to-hire options.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 shadow">
+                            <img src="https://successjobs.org/wp-content/uploads/2021/10/5.png" alt="Operations" class="card-img-top" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title fw-semibold text-dark h5">Operations</h3>
+                                <p class="card-text text-muted flex-grow-1">
+                                    Voice/Non-voice, BPO, KPO, HR, and training services for comprehensive operational support.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card h-100 shadow">
+                            <img src="https://images.unsplash.com/photo-1554224154-22dec7ec8818" alt="Non Technical Jobs" class="card-img-top" loading="lazy">
+                            <div class="card-body d-flex flex-column">
+                                <h3 class="card-title fw-semibold text-dark h5">Non Technical Jobs</h3>
+                                <p class="card-text text-muted flex-grow-1">
+                                    Accounts, Finance, Sales, Marketing, and Lead Generation roles across various industries.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="About Us" class="img-fluid rounded-3 shadow" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold mb-4 text-dark">About Success Jobs</h2>
+                        <p class="lead text-muted mb-4">
+                            Established in 2011, Success Jobs is a premier manpower consulting firm based in Jaipur, serving companies across India.
+                        </p>
+                        <p class="lead text-muted mb-4">
+                            We pride ourselves on being the preferred consulting firm, delivering the right candidates according to your specific requirements.
+                        </p>
+                        <a href="#" class="btn btn-primary" data-route="/about">
+                            <i class="fas fa-info-circle me-2"></i>READ MORE
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recommendations Section -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="display-5 fw-bold text-center mb-5 text-dark">Client Recommendations</h2>
+                        <div class="testimonial-card shadow">
+                            <p class="lead text-dark mb-4">
+                                "I would highly recommend Ankit Sudan for recruitment purposes. He's an amazing recruiter who understands candidate career growth needs. <strong>#Highly recommended</strong>"
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="aditya sharma" class="rounded-circle me-3" style="width: 56px; height: 56px;" loading="lazy">
+                                <div>
+                                    <h4 class="fw-semibold text-dark mb-1">Aditya Sharma</h4>
+                                    <p class="text-muted small mb-0">Software Testing • February 1, 2020</p>
+                                    <small class="text-muted">Client of Aniket's</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <!-- Hero Section -->
+        <section class="bg-gradient-blue text-white py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4">About Success Jobs</h1>
+                        <p class="lead mb-4">
+                            Leading the way in manpower consulting since 2011, connecting talent with opportunity across India.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row align-items-center g-5">
+                    <div class="col-lg-6">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" alt="About Us" class="img-fluid rounded-3 shadow" loading="lazy">
+                    </div>
+                    <div class="col-lg-6">
+                        <h2 class="display-5 fw-bold mb-4 text-dark">Our Story</h2>
+                        <p class="lead text-muted mb-4">
+                            Success Jobs is a prominent Manpower Consulting Firm established and promoted in 2011, with an office in Jaipur but working for companies across India.
+                        </p>
+                        <p class="lead text-muted mb-4">
+                            This is one of the most preferred Consulting firms among others as they provide the right candidates to companies according to their various requirements.
+                        </p>
+                        <a href="#" class="btn btn-primary" data-route="/contact">
+                            <i class="fas fa-envelope me-2"></i>Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission and Vision -->
+        <section class="section-padding bg-light">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="display-5 fw-bold text-dark mb-3">Our Values</h2>
+                        <p class="lead text-muted">What drives us to deliver excellence</p>
+                    </div>
+                </div>
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="feature-card shadow">
+                            <i class="fas fa-bullseye"></i>
+                            <h3 class="h4 fw-bold mb-3 text-dark">Our Mission</h3>
+                            <p class="text-muted">
+                                To deliver quality candidates to our clients and place the right candidate in the right job within the time frame.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="feature-card shadow">
+                            <i class="fas fa-eye"></i>
+                            <h3 class="h4 fw-bold mb-3 text-dark">Our Vision</h3>
+                            <p class="text-muted">
+                                To be the leading manpower consulting firm in India, known for our integrity, expertise, and commitment to excellence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CURRENT OPENINGS PAGE -->
+    <div id="openings" class="page">
+        <!-- Hero Section -->
+        <section class="bg-gradient-blue text-white py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4">Current Openings</h1>
+                        <p class="lead mb-4">
+                            Discover exciting career opportunities across various industries. Find your perfect job match today.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Openings Content -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <!-- Category Filter -->
+                <div class="filter-section">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <h3 class="h4 fw-bold text-center mb-4 text-dark">Filter by Category</h3>
+                            <div class="d-flex flex-wrap justify-content-center gap-3">
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">All Categories</button>
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">IT</button>
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">Executive</button>
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">Operations</button>
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">Finance</button>
+                                <button class="btn btn-outline-primary rounded-pill fw-medium">Marketing</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Listings -->
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="job-card shadow">
+                            <h3 class="h5 fw-bold mb-3 text-dark">
+                                <i class="fas fa-code text-primary me-2"></i>Senior Software Engineer
+                            </h3>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">IT</span>
+                                <span class="badge bg-success">Jaipur</span>
+                                <span class="badge bg-info">Full-time</span>
+                            </div>
+                            <p class="text-muted mb-3">We are looking for an experienced software engineer to join our development team.</p>
+                            <div class="mb-3">
+                                <h4 class="h6 fw-semibold text-dark mb-2">Requirements:</h4>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><i class="fas fa-check text-success me-2"></i>5+ years of experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>React, Node.js</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>MongoDB, AWS</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold fs-5">₹8-12 LPA</span>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="job-card shadow">
+                            <h3 class="h5 fw-bold mb-3 text-dark">
+                                <i class="fas fa-user-tie text-primary me-2"></i>Executive Search Consultant
+                            </h3>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Executive</span>
+                                <span class="badge bg-success">Jaipur</span>
+                                <span class="badge bg-info">Full-time</span>
+                            </div>
+                            <p class="text-muted mb-3">Join our executive search team to help companies find top leadership talent.</p>
+                            <div class="mb-3">
+                                <h4 class="h6 fw-semibold text-dark mb-2">Requirements:</h4>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><i class="fas fa-check text-success me-2"></i>3+ years in recruitment</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Executive search experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Strong networking skills</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold fs-5">₹6-10 LPA</span>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="job-card shadow">
+                            <h3 class="h5 fw-bold mb-3 text-dark">
+                                <i class="fas fa-cogs text-primary me-2"></i>Operations Manager
+                            </h3>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Operations</span>
+                                <span class="badge bg-success">Jaipur</span>
+                                <span class="badge bg-info">Full-time</span>
+                            </div>
+                            <p class="text-muted mb-3">Manage day-to-day operations and lead a team of operations professionals.</p>
+                            <div class="mb-3">
+                                <h4 class="h6 fw-semibold text-dark mb-2">Requirements:</h4>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><i class="fas fa-check text-success me-2"></i>5+ years operations experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Team management</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Process optimization</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold fs-5">₹7-9 LPA</span>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="job-card shadow">
+                            <h3 class="h5 fw-bold mb-3 text-dark">
+                                <i class="fas fa-chart-line text-primary me-2"></i>Financial Analyst
+                            </h3>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Finance</span>
+                                <span class="badge bg-success">Jaipur</span>
+                                <span class="badge bg-info">Full-time</span>
+                            </div>
+                            <p class="text-muted mb-3">Analyze financial data and provide insights for business decisions.</p>
+                            <div class="mb-3">
+                                <h4 class="h6 fw-semibold text-dark mb-2">Requirements:</h4>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><i class="fas fa-check text-success me-2"></i>3+ years finance experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Excel proficiency</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Financial modeling</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold fs-5">₹5-8 LPA</span>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="job-card shadow">
+                            <h3 class="h5 fw-bold mb-3 text-dark">
+                                <i class="fas fa-bullhorn text-primary me-2"></i>Marketing Specialist
+                            </h3>
+                            <div class="d-flex flex-wrap gap-2 mb-3">
+                                <span class="badge bg-primary">Marketing</span>
+                                <span class="badge bg-success">Jaipur</span>
+                                <span class="badge bg-info">Full-time</span>
+                            </div>
+                            <p class="text-muted mb-3">Develop and execute marketing campaigns to drive business growth.</p>
+                            <div class="mb-3">
+                                <h4 class="h6 fw-semibold text-dark mb-2">Requirements:</h4>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><i class="fas fa-check text-success me-2"></i>2+ years marketing experience</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Digital marketing</li>
+                                    <li><i class="fas fa-check text-success me-2"></i>Content creation</li>
+                                </ul>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-success fw-bold fs-5">₹4-7 LPA</span>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-paper-plane me-1"></i>Apply Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- INTERVIEW TIPS PAGE -->
+    <div id="tips" class="page">
+        <!-- Hero Section -->
+        <section class="bg-gradient-blue text-white py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4">Interview Tips</h1>
+                        <p class="lead mb-4">
+                            Master your interview skills with our expert tips and strategies. Prepare confidently and land your dream job.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview Tips Content -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="display-5 fw-bold text-dark mb-3">Essential Interview Strategies</h2>
+                        <p class="lead text-muted">Follow these proven tips to ace your next interview</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-search"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Prepare Thoroughly</h3>
+                            <p class="text-muted">
+                                Research the company, understand the job requirements, and prepare answers to common interview questions.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-user-tie"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Dress Appropriately</h3>
+                            <p class="text-muted">
+                                Choose professional attire that fits the company culture. When in doubt, it's better to be overdressed.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-clock"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Be Punctual</h3>
+                            <p class="text-muted">
+                                Arrive 10-15 minutes early for your interview. Plan your route and account for potential delays.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-handshake"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Body Language Matters</h3>
+                            <p class="text-muted">
+                                Maintain good posture, make eye contact, and offer a firm handshake. Smile and be confident.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-question-circle"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Ask Questions</h3>
+                            <p class="text-muted">
+                                Prepare thoughtful questions about the company, team, and role. This shows genuine interest.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="tip-card shadow">
+                            <i class="fas fa-envelope"></i>
+                            <h3 class="h5 fw-bold mb-3 text-dark">Follow Up</h3>
+                            <p class="text-muted">
+                                Send a thank-you email within 24 hours of the interview, reiterating your interest in the position.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <!-- Hero Section -->
+        <section class="bg-gradient-blue text-white py-5">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h1 class="display-4 fw-bold mb-4">Contact Us</h1>
+                        <p class="lead mb-4">
+                            Ready to take the next step in your career? Get in touch with our expert recruitment team today.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section-padding bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center mb-5">
+                        <h2 class="display-5 fw-bold text-dark mb-3">Get In Touch</h2>
+                        <p class="lead text-muted">We're here to help you find your dream job or the perfect candidate</p>
+                    </div>
+                </div>
+
+                <div class="row g-5">
+                    <!-- Contact Form -->
+                    <div class="col-lg-8">
+                        <div class="contact-info">
+                            <h3 class="h4 fw-bold mb-4 text-dark">Send us a Message</h3>
+                            <form>
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <input type="text" class="
